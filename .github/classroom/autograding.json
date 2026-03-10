@@ -11,7 +11,7 @@
       "comparison": "exit_code"
     },
     {
-      "name": "Test 2: Library Import",
+      "name": "Test 2: Library Import Check",
       "run": "jupyter nbconvert --to notebook --execute ITAI1378 - Assignment 1.ipynb --stdout",
       "points": 9,
       "input": "",
@@ -21,17 +21,17 @@
       "comparison": "included"
     },
     {
-      "name": "Test 3: Image Download",
+      "name": "Test 3: Image Download Check",
       "run": "jupyter nbconvert --to notebook --execute ITAI1378 - Assignment 1.ipynb --stdout",
       "points": 9,
       "input": "",
-      "output": "Image downloaded successfully.",
+      "output": "Image downloaded and saved as fruits.jpg.",
       "setup": "",
       "timeout": 60,
       "comparison": "included"
     },
     {
-      "name": "Test 4: Image Load",
+      "name": "Test 4: Image Load Check",
       "run": "jupyter nbconvert --to notebook --execute ITAI1378 - Assignment 1.ipynb --stdout",
       "points": 9,
       "input": "",
@@ -41,9 +41,9 @@
       "comparison": "included"
     },
     {
-      "name": "Test 5: Image Type and Shape",
+      "name": "Test 5: Image Type and Shape Check",
       "run": "jupyter nbconvert --to notebook --execute ITAI1378 - Assignment 1.ipynb --stdout",
-      "points": 18,
+      "points": 9,
       "input": "",
       "output": "Type of the image: <class 'numpy.ndarray'>\nShape of the image:",
       "setup": "",
@@ -51,7 +51,7 @@
       "comparison": "included"
     },
     {
-      "name": "Test 6: Image Conversion",
+      "name": "Test 6: Image Conversion Check",
       "run": "jupyter nbconvert --to notebook --execute ITAI1378 - Assignment 1.ipynb --stdout",
       "points": 9,
       "input": "",
@@ -61,9 +61,9 @@
       "comparison": "included"
     },
     {
-      "name": "Test 7: RGB Channels Display",
+      "name": "Test 7: RGB Image Display Check",
       "run": "jupyter nbconvert --to notebook --execute ITAI1378 - Assignment 1.ipynb --stdout",
-      "points": 18,
+      "points": 9,
       "input": "",
       "output": "<Figure size",
       "setup": "",
@@ -71,11 +71,21 @@
       "comparison": "included"
     },
     {
-      "name": "Test 8: Final Reflection",
-      "run": "python3 -c \"import json,sys; nb=json.load(open(sys.argv[1], encoding='utf-8')); print('\\n'.join((''.join(cell.get('source', [])) if isinstance(cell.get('source'), list) else str(cell.get('source', ''))) for cell in nb.get('cells', [])))\" 'ITAI1378 - Assignment 1.ipynb'",
-      "points": 19,
+      "name": "Test 8: RGB Channels Display Check",
+      "run": "jupyter nbconvert --to notebook --execute ITAI1378 - Assignment 1.ipynb --stdout",
+      "points": 9,
       "input": "",
-      "output": "What does an image represent to a computer",
+      "output": "<Figure size",
+      "setup": "",
+      "timeout": 60,
+      "comparison": "included"
+    },
+    {
+      "name": "Test 9: Final Reflection Check",
+      "run": "python3 -c \"import json,sys; nb=json.load(open(sys.argv[1], encoding='utf-8')); print('\\n'.join((''.join(cell.get('source', [])) if isinstance(cell.get('source'), list) else str(cell.get('source', ''))) for cell in nb.get('cells', [])))\" 'ITAI1378 - Assignment 1.ipynb'",
+      "points": 28,
+      "input": "",
+      "output": "Final Reflection completed.",
       "setup": "",
       "timeout": 60,
       "comparison": "included"

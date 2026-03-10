@@ -27,79 +27,89 @@ jobs:
         timeout: 60
         max-score: 9
 
-    - name: test2libraryimport
-      id: test2libraryimport
+    - name: test2libraryimportcheck
+      id: test2libraryimportcheck
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: "Test 2: Library Import"
+        test-name: "Test 2: Library Import Check"
         command: jupyter nbconvert --to notebook --execute ITAI1378 - Assignment 1.ipynb --stdout
         timeout: 60
         max-score: 9
 
-    - name: test3imagedownload
-      id: test3imagedownload
+    - name: test3imagedownloadcheck
+      id: test3imagedownloadcheck
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: "Test 3: Image Download"
+        test-name: "Test 3: Image Download Check"
         command: jupyter nbconvert --to notebook --execute ITAI1378 - Assignment 1.ipynb --stdout
         timeout: 60
         max-score: 9
 
-    - name: test4imageload
-      id: test4imageload
+    - name: test4imageloadcheck
+      id: test4imageloadcheck
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: "Test 4: Image Load"
+        test-name: "Test 4: Image Load Check"
         command: jupyter nbconvert --to notebook --execute ITAI1378 - Assignment 1.ipynb --stdout
         timeout: 60
         max-score: 9
 
-    - name: test5imagetypeandshape
-      id: test5imagetypeandshape
+    - name: test5imagetypeandshapecheck
+      id: test5imagetypeandshapecheck
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: "Test 5: Image Type and Shape"
-        command: jupyter nbconvert --to notebook --execute ITAI1378 - Assignment 1.ipynb --stdout
-        timeout: 60
-        max-score: 18
-
-    - name: test6imageconversion
-      id: test6imageconversion
-      uses: classroom-resources/autograding-command-grader@v1
-      with:
-        test-name: "Test 6: Image Conversion"
+        test-name: "Test 5: Image Type and Shape Check"
         command: jupyter nbconvert --to notebook --execute ITAI1378 - Assignment 1.ipynb --stdout
         timeout: 60
         max-score: 9
 
-    - name: test7rgbchannelsdisplay
-      id: test7rgbchannelsdisplay
+    - name: test6imageconversioncheck
+      id: test6imageconversioncheck
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: "Test 7: RGB Channels Display"
+        test-name: "Test 6: Image Conversion Check"
         command: jupyter nbconvert --to notebook --execute ITAI1378 - Assignment 1.ipynb --stdout
         timeout: 60
-        max-score: 18
+        max-score: 9
 
-    - name: test8finalreflection
-      id: test8finalreflection
+    - name: test7rgbimagedisplaycheck
+      id: test7rgbimagedisplaycheck
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: "Test 8: Final Reflection"
+        test-name: "Test 7: RGB Image Display Check"
+        command: jupyter nbconvert --to notebook --execute ITAI1378 - Assignment 1.ipynb --stdout
+        timeout: 60
+        max-score: 9
+
+    - name: test8rgbchannelsdisplaycheck
+      id: test8rgbchannelsdisplaycheck
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "Test 8: RGB Channels Display Check"
+        command: jupyter nbconvert --to notebook --execute ITAI1378 - Assignment 1.ipynb --stdout
+        timeout: 60
+        max-score: 9
+
+    - name: test9finalreflectioncheck
+      id: test9finalreflectioncheck
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "Test 9: Final Reflection Check"
         command: python3 -c "import json,sys; nb=json.load(open(sys.argv[1], encoding='utf-8')); print('\n'.join((''.join(cell.get('source', [])) if isinstance(cell.get('source'), list) else str(cell.get('source', ''))) for cell in nb.get('cells', [])))" 'ITAI1378 - Assignment 1.ipynb'
         timeout: 60
-        max-score: 19
+        max-score: 28
 
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         TEST1SYNTAXCHECK_RESULTS: "${{ steps.test1syntaxcheck.outputs.result }}"
-        TEST2LIBRARYIMPORT_RESULTS: "${{ steps.test2libraryimport.outputs.result }}"
-        TEST3IMAGEDOWNLOAD_RESULTS: "${{ steps.test3imagedownload.outputs.result }}"
-        TEST4IMAGELOAD_RESULTS: "${{ steps.test4imageload.outputs.result }}"
-        TEST5IMAGETYPEANDSHAPE_RESULTS: "${{ steps.test5imagetypeandshape.outputs.result }}"
-        TEST6IMAGECONVERSION_RESULTS: "${{ steps.test6imageconversion.outputs.result }}"
-        TEST7RGBCHANNELSDISPLAY_RESULTS: "${{ steps.test7rgbchannelsdisplay.outputs.result }}"
-        TEST8FINALREFLECTION_RESULTS: "${{ steps.test8finalreflection.outputs.result }}"
+        TEST2LIBRARYIMPORTCHECK_RESULTS: "${{ steps.test2libraryimportcheck.outputs.result }}"
+        TEST3IMAGEDOWNLOADCHECK_RESULTS: "${{ steps.test3imagedownloadcheck.outputs.result }}"
+        TEST4IMAGELOADCHECK_RESULTS: "${{ steps.test4imageloadcheck.outputs.result }}"
+        TEST5IMAGETYPEANDSHAPECHECK_RESULTS: "${{ steps.test5imagetypeandshapecheck.outputs.result }}"
+        TEST6IMAGECONVERSIONCHECK_RESULTS: "${{ steps.test6imageconversioncheck.outputs.result }}"
+        TEST7RGBIMAGEDISPLAYCHECK_RESULTS: "${{ steps.test7rgbimagedisplaycheck.outputs.result }}"
+        TEST8RGBCHANNELSDISPLAYCHECK_RESULTS: "${{ steps.test8rgbchannelsdisplaycheck.outputs.result }}"
+        TEST9FINALREFLECTIONCHECK_RESULTS: "${{ steps.test9finalreflectioncheck.outputs.result }}"
       with:
-        runners: test1syntaxcheck,test2libraryimport,test3imagedownload,test4imageload,test5imagetypeandshape,test6imageconversion,test7rgbchannelsdisplay,test8finalreflection
+        runners: test1syntaxcheck,test2libraryimportcheck,test3imagedownloadcheck,test4imageloadcheck,test5imagetypeandshapecheck,test6imageconversioncheck,test7rgbimagedisplaycheck,test8rgbchannelsdisplaycheck,test9finalreflectioncheck
